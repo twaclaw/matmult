@@ -55,13 +55,19 @@ void axis2Mat (axis_t *src,
 				 T B[N][N])
 				 {
 #pragma HLS inline off
+	union
+	{
+		int ival;
+		T oval;
+	} converter;
 
 	for (int i=0; i<N; i++) {
 		for (int j=0; j<N; j++) {
 #pragma HLS pipeline
 #pragma HLS loop_flatten off
 			int k = i*N + j;
-			A[i][j] = src[k].data;
+			converter.ival = src[k].data;
+			A[i][j] = converter.oval;
 		}	
 	}
 
@@ -70,7 +76,8 @@ void axis2Mat (axis_t *src,
 #pragma HLS pipeline
 #pragma HLS loop_flatten off
 			int k = i*N + j;
-			B[i][j] = src[k + SIZE].data; //TODO implement conversion
+			converter.ival = src[k + SIZE].data;
+			B[i][j] = converter.oval;
 		}	
 	}
 }
@@ -80,6 +87,11 @@ void Mat2axis (T C[N][N],
 		 axis_t *dst
 		 ) {
 #pragma HLS inline off
+	union
+	{
+		int oval;
+		T ival;
+	} converter;
 
 	for (int i=0; i<N; i++) {
 		for (int j=0; j<N; j++) {
@@ -90,7 +102,8 @@ void Mat2axis (T C[N][N],
 				tmp = 1;
 			}
 			dst[i*N+j].last = tmp;
-			dst[i*N+j].data = C[i][j]; //TODO implement conversion
+			converter.ival = C[i][j];
+			dst[i*N+j].data = converter.oval;
 		}
 	}
 }
@@ -104,9 +117,9 @@ void matmult_accel (axis_t *src, axis_t *dst) {
 
 #pragma HLS dataflow
 
-	int A[N][N];
-	int B[N][N];
-	int C[N][N];
+	float A[N][N];
+	float B[N][N];
+	float C[N][N];
 
 	axis2Mat(src, A, B);	
 
