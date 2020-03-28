@@ -43,7 +43,6 @@ struct axis_t {
     ap_int<1> last;
 };
 
-void matmult_accel (axis_t *src, axis_t *dst);
 template <typename T>
 void mmult_hw(T a[N][N], T b[N][N], T out[N][N]);
 
