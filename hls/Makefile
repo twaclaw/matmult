@@ -4,11 +4,15 @@ VERSION := 1.0
 all: hls copy
 	@echo "IP built successfully."
 
-hls:
-	vivado_hls -f script.tcl
-
-copy:
+solution1:
+	vivado_hls -f script_solution1.tcl
 	cp -rf $(IP)/solution1/impl/ip/*.zip ../../
+	cd ../../ && rm -rf $(IP)_$(VERSION) && \
+	unzip *.zip -d $(IP)_$(VERSION) && rm *.zip
+
+solution2:
+	vivado_hls -f script_solution2.tcl
+	cp -rf $(IP)/solution2/impl/ip/*.zip ../../
 	cd ../../ && rm -rf $(IP)_$(VERSION) && \
 	unzip *.zip -d $(IP)_$(VERSION) && rm *.zip
 

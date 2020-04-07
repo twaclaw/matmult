@@ -55,7 +55,6 @@ void axis2Mat (axis_t *src,
 				 T B[N][N])
 				 {
 #pragma HLS inline off
-	assert(sizeof(T) == sizeof(int));
 	union
 	{
 		int ival;
@@ -88,7 +87,6 @@ void Mat2axis (T C[N][N],
 		 axis_t *dst
 		 ) {
 #pragma HLS inline off
-	assert(sizeof(T) == sizeof(int));
 	union
 	{
 		int oval;
