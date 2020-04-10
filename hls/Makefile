@@ -1,7 +1,7 @@
 IP := matmult
 VERSION := 1.0
 
-all: hls copy
+all: solution1 
 	@echo "IP built successfully."
 
 solution1:
