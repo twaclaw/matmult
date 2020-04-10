@@ -35,8 +35,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "hls_stream.h"
 #include "ap_int.h"
 
-#define N 32
-#define SIZE 1024
+#define N 128     
+#define SIZE 16384 // N*N
 
 struct axis_t {
     ap_uint<32> data;
