@@ -1,6 +1,6 @@
 # matmult HLS Implementation
 
-This folder contains the matrix multiplication kernel *c++* code. 
+This folder contains the matrix multiplication module *c++* code. 
 
 To build run:
 ```bash
