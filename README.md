@@ -10,7 +10,7 @@ This repo describes the implementation of a floating-point matrix multiplication
 
 The hardware module implements the matrix product **C** = **AB**, where **A**, **B**, and **C** are 128 x 128 matrices.
 
-This hardware accelerator provides a 2x speedup compared to NumPy. This performance  is achieved at expenses of a high  utilization of FPGA resources.   It should be noted that NumPy uses a more efficient algorithm than the naive one implemented in this example.
+This hardware accelerator provides a 2.8x speedup compared to NumPy. It should be noted that NumPy uses both vectorization and  a more efficient algorithm than the naive one implemented in this example.
 
 ## Repo Organization
 
