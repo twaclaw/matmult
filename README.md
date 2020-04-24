@@ -10,7 +10,9 @@ This repo describes the implementation of a floating-point matrix multiplication
 
 The hardware module implements the matrix product **C** = **AB**, where **A**, **B**, and **C** are 128 x 128 matrices.
 
-This hardware accelerator provides a 2.8x speedup compared to NumPy. It should be noted that NumPy uses both vectorization and  a more efficient algorithm than the naive one implemented in this example.
+This hardware accelerator provides a 2.8x speedup compared to NumPy. It should be noted that NumPy uses both vectorization and, presumably,  a more efficient algorithm than the naive one implemented in this example.
+
+A 3.5x speedup can be achieved by using the 64-bit AXI-Stream interface. This approach requires additional logic to pack and unpack the matrices. 
 
 ## Repo Organization
 
