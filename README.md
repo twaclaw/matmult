@@ -41,6 +41,6 @@ Requires Xilinx `vivado` and `vivado_hls` version 2019.2. If necessary, a differ
     ```
 ## Credits
 
-* This implementation borrows ideas and code from [this application note](https://www.xilinx.com/support/documentation/application_notes/xapp1170-zynq-hls.pdf), and the [PYNQ hello world example](https://github.com/Xilinx/PYNQ-HelloWorld).
+* This implementation borrows ideas and code from [this application note](https://www.xilinx.com/support/documentation/application_notes/xapp1170-zynq-hls.pdf) (Copyright (c) 2016, Xilinx, Inc.), and the [PYNQ hello world example](https://github.com/Xilinx/PYNQ-HelloWorld).
 * Schematic of matrix multiplication taken from [Wikipedia](https://en.wikipedia.org/wiki/Matrix_multiplication#/media/File:Matrix_multiplication_qtl1.svg)
 
