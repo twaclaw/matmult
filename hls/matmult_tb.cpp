@@ -1,48 +1,41 @@
 #include "matmult.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-
-typedef float T;
-
-void mmult_sw(T a[N][N], T b[N][N], T out[N][N]) {
-  // matrix multiplication of a A*B matrix
+void mmult_sw(DataType a[N2], DataType b[N2], DataType out[N2])
+{
   for (int ia = 0; ia < N; ++ia)
-    for (int ib = 0; ib < N; ++ib) {
-
+    for (int ib = 0; ib < N; ++ib)
+    {
       float sum = 0;
-
       for (int id = 0; id < N; ++id)
+        sum += a[ia * N + id] * b[id * N + ib];
 
-        sum += a[ia][id] * b[id][ib];
-
-      out[ia][ib] = sum;
+      out[ia * N + ib] = sum;
     }
 }
 
-int main(void) {
+int main(void)
+{
 
   int ret_val = 0;
 
   int i, j, err;
 
-  T matOp1[N][N];
-  T matOp2[N][N];
-  T matMult_sw[N][N];
-  T matMult_hw[N][N];
+  DataType matOp1[N2];
+  DataType matOp2[N2];
+  DataType matMult_sw[N2];
+  DataType matMult_hw[N2];
 
   /** Matrix Initiation */
   for (i = 0; i < N; i++)
     for (j = 0; j < N; j++)
-      matOp1[i][j] = (float)(i + j);
+      matOp1[i * N + j] = (DataType)(i + j);
 
   for (i = 0; i < N; i++)
     for (j = 0; j < N; j++)
-      matOp2[i][j] = (float)(i * j);
+      matOp2[i * N + j] = (DataType)(i * j);
   /** End of Initiation */
 
-  printf("NORMAL MODE\r\n");
-  mmult_hw(matOp1, matOp2, matMult_hw);
+  kernel_mmult<DataType>(matOp1, matOp2, matMult_hw);
 
   /* reference Matrix Multiplication */
   mmult_sw(matOp1, matOp2, matMult_sw);
@@ -51,7 +44,7 @@ int main(void) {
   err = 0;
   for (i = 0; (i < N && !err); i++)
     for (j = 0; (j < N && !err); j++)
-      if (matMult_sw[i][j] != matMult_hw[i][j])
+      if (matMult_sw[i * N + j] != matMult_hw[i * N + j])
         err++;
 
   if (err == 0)
