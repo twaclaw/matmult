@@ -1,1 +1,5 @@
-Copy the folder matmult (containing the [Jupyter notebook](./matmult/matmult.ipynb) and the overlay files) to the Jupyter notebooks area in the PYNQ-Z1 device.
+Copy the [Jupyter notebook](./matmult/matmult.ipynb) to the Jupyter notebooks folder in the PYNQ-Z1 device.
+
+```bash
+$ scp matmult.ipynb xilinx@pynq:jupyter_notebooks/matmult
+```

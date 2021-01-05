@@ -13,7 +13,7 @@ This project has been refactored, and updated to work with  Vivado 2020.2. The p
 
 ---
 
-This repo describes the implementation of a floating-point matrix multiplication on a [PYNQ-Z1](https://store.digilentinc.com/pynq-z1-python-productivity-for-zynq-7000-arm-fpga-soc/) development board. 
+This repo describes the implementation of a floating-point matrix multiplication on a Xilinx FPGA.
 
 The hardware module implements the matrix product **C** = **AB**, where **A**, **B**, and **C** are 128 x 128 floating-point matrices.
 
@@ -22,12 +22,12 @@ This hardware accelerator provides a 3.4x speedup compared to NumPy.
 ## Repo Organization
 
 * [[hls]](./hls) contains the accelerator *c++* source code for high level synthesis.
-* [[boards/Pynq-Z1/matmult]](./boards/Pynq-Z1/matmult) contains the Vivado project.
-* [[notebooks]](./notebooks) contains the Jupyter Notebook to evaluate the design. This folder also contains the required overlay generated with `vivado` and `vitis_hls` version 2020.2.
+* [[boards/Pynq-Z1/]](./boards/Pynq-Z1/) contains the Vivado project and overlays generated with `vivado` and `vitis_hls` version 2020.2.
+* [[notebooks]](./notebooks) contains the Jupyter Notebook to evaluate the design. 
 
 ## Installation
 
-* Copy the [notebooks/matmult](./notebooks/matmult) folder to the Jupyter notebooks area in the PYNQ-Z1 device. 
+* Copy the [Jupyter notebook](./notebooks/matmult.ipynb) and the content of the corresponding [overlays](./boards/Pynq-Z1/overlays) folder to the Jupyter notebooks area in the FPGA board (e.g. under `/home/xilinx/jupyter_notebooks/matmult`).
 
 ## Build
 Requires Xilinx `vivado` and `vitis_hls` version 2020.2. If necessary, a different version can be configured in [matmult.tcl](./boards/Pynq-Z1/matmult/matmult.tcl).
